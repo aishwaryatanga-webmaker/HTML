@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Anchor Tag Example</title>
+</head>
+<body>
+  <h1>Contact Us</h1>
+  <!-- Email anchor tag -->
+  <p>
+    <a href="https:c\Users\kt\OneDrive\Desktop\LT-JavaScript Short Notes-281124-130356 Copy.pdf" download="CustomFileName.pdf">Download Sample PDF</a>
+  </p>
+  
+</body>
+</html>
+
+<form>
+  <label for="country">Select Country:</label>
+  <select id="country" name="country" required>
+    <option value="">--Select--</option>
+    <option value="India">India</option>
+    <option value="USA">USA</option>
+    <option value="UK">UK</option>
+  </select>
+  <small id="selectError"></small>
+  <button type="button" onclick="validateSelect()">Submit</button>
+</form>
+
+<script>
+  function validateSelect() {
+    const select = document.getElementById('country');
+    const error = document.getElementById('selectError');
+    
+    if (select.value === "") {
+      error.innerText = "You must select a country.";
+    } else {
+      error.innerText = "";
+      alert("Selection is valid!");
+    }
+  }
+</script>
+
+<form>
+  <label for="phone">Phone Number:</label>
+  <input type="text" id="phone" name="phone" required>
+  <small id="phoneError"></small>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const phoneInput = document.getElementById('phone');
+  const phoneError = document.getElementById('phoneError');
+  
+  phoneInput.addEventListener('input', () => {
+    const regex = /^[6-9]\d{9}$/;
+    if (!regex.test(phoneInput.value)) {
+      phoneError.innerText = "Invalid phone number format.";
+    } else {
+      phoneError.innerText = "";
+    }
+  });
+</script>
+
+<form id="resetForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  <small id="nameError"></small>
+  
+  <button type="reset" onclick="resetValidation()">Reset</button>
+</form>
+
+<script>
+  function resetValidation() {
+    document.getElementById('nameError').innerText = "";
+  }
+</script>
+<form id="userForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  <small id="nameError"></small>
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+  <small id="emailError"></small>
+  
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById('userForm').addEventListener('submit', function(event) {
+    let valid = true;
+
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    
+    if (name.value.trim() === "") {
+      nameError.innerText = "Name is required.";
+      valid = false;
+    } else {
+      nameError.innerText = "";
+    }
+
+    if (!email.checkValidity()) {
+      emailError.innerText = "Enter a valid email.";
+      valid = false;
+    } else {
+      emailError.innerText = "";
+    }
+
+    if (!valid) {
+      event.preventDefault();
+    }
+  });
+</script>
+
+

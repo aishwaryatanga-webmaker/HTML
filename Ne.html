@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <title>Counter Component</title>
+</head>
+<body>
+    <button onclick="increase()">+</button>
+    <button onclick="descrease()">-</button>
+    <button onclick="reset()">Reset</button>
+    <h3 id="head">0</h3>
+
+    <script>
+        let counter = 0; 
+        function updatedom(){
+            let  target = document.getElementById('head');
+            target.textContent = counter;
+        }
+        function increase(){
+            counter++;
+            updatedom();
+        }
+        
+        function descrease(){
+            counter--;
+            updatedom();
+        }
+
+        function reset(){
+            counter  = 0;
+            updatedom();
+        }
+    </script>
+</body>
+</html>   
